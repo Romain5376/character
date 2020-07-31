@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personnages{% endblock %}
+{% block monTitre %}
+Liste des personnages
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col l12 col m6 offset-m3 col s12">
+            <table class="highlight centered responsive-table">
+                <tr class="grey darken-4 white-text">
+                    <th id="img">Image</th>
+                    <th>Nom</th>
+                    <th>Age</th>
+                    <th>Sexe</th>
+                    <th>Force</th>
+                    <th>Agilité</th>
+                    <th>Intélligence</th>
+                </tr>
+                {% for p in players %}
+                <tr>
+                    <td><img src="{{ asset("images/Personnages/" ~ p.name ~ ".png") }}"</td>
+                    <td><a href="{{ path('afficherPersonnage', {'nom' : p.name|lower}) }}">{{ p.name }}</a></td>
+                    <td>{{ p.age }}</td>
+                    <td>
+                        {% if p.sexe %}
+                            Homme
+                            {% else %}
+                            Femme
+                        {% endif %}
+                    </td>
+                    <td>{{ p.carac.force }}</td>
+                    <td>{{ p.carac.agi }}</td>
+                    <td>{{ p.carac.intel }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

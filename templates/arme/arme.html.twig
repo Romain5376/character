@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Arme{% endblock %}
+{% block monTitre %}
+
+Arme {{ weapon.name }}
+
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col l6 offset-l3 col m10 offset-m1">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ asset('images/Armes/' ~ weapon.name|replace({'é':'e'}) ~ '.png') }}" /> 
+            </div>
+            <div class="card-content center-align">
+                <h4>Informations sur l'arme</h4>
+                <ul>
+                    <li><b>Type d'arme:</b> 
+                        {{ weapon.name }}
+                    </li>
+                    <li><b>Description:</b>
+                        {{ weapon.description }}
+                    </li>
+                </ul>
+                <h4>Les caractéristiques</h4>
+                <ul>
+                    <li><b>Dégats:</b>
+                        {{ weapon.value }}
+                    </li>
+                </ul>
+            </div>
+            <div class="card-action center-align">
+                <a href="{{ asset('/armes') }}">Retour sur les armes</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

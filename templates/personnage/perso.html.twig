@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personnages{% endblock %}
+{% block monTitre %}
+Personnage {{ perso.name }}
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col l6 offset-l3 col m10 offset-m1">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ asset('images/Personnages/' ~ perso.name ~ '.png') }}" style="width:20%;" />
+            </div>
+            <div class="card-content center-align">
+                <h4>Informations sur le personnage</h4>
+                <ul>
+                    <li><b>Prénom:</b> {{ perso.name }}</li>
+                    <li><b>Âge:</b> {{ perso.age }}ans</li>
+                    <li>
+                        {% if perso.sexe %}
+                        <b>Sexe:</b> Homme
+                        {% else %}
+                        <b>Sexe:</b> Femme
+                        {% endif %}
+                    </li>
+                </ul>
+                <h4>Les caractéristiques</h4>
+                <ul>
+                    <li><b>Force:</b> {{ perso.carac.force }}</li>
+                    <li><b>Agilité:</b> {{ perso.carac.agi }}</li>
+                    <li><b>Intélligence:</b> {{ perso.carac.intel }}</li>
+                </ul>
+            </div>
+            <div class="card-action center-align">
+                <a href="{{ asset('/persos') }}">Retour sur les personnages</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
